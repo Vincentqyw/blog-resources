@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1110 320" font-family="-apple-system, 'PingFang SC', 'Noto Sans CJK SC', 'Microsoft YaHei', Helvetica, Arial, sans-serif" font-size="13">
+  <rect width="1110" height="320" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c2410c"/></marker>
+    <g id="pts">
+      <circle cx="60" cy="70" r="3.2" fill="#1d4ed8"/><circle cx="78" cy="58" r="3.2" fill="#1d4ed8"/><circle cx="52" cy="92" r="3.2" fill="#1d4ed8"/><circle cx="84" cy="88" r="3.2" fill="#1d4ed8"/>
+      <circle cx="190" cy="62" r="3.2" fill="#1d4ed8"/><circle cx="212" cy="80" r="3.2" fill="#1d4ed8"/><circle cx="176" cy="96" r="3.2" fill="#1d4ed8"/>
+      <circle cx="120" cy="150" r="3.2" fill="#1d4ed8"/><circle cx="146" cy="166" r="3.2" fill="#1d4ed8"/><circle cx="108" cy="176" r="3.2" fill="#1d4ed8"/><circle cx="140" cy="140" r="3.2" fill="#1d4ed8"/><circle cx="160" cy="188" r="3.2" fill="#1d4ed8"/>
+    </g>
+    <g id="cent">
+      <path d="M68,78 l6,-6 l6,6 l-6,6 z" fill="#c2410c"/><path d="M192,80 l6,-6 l6,6 l-6,6 z" fill="#c2410c"/><path d="M134,164 l6,-6 l6,6 l-6,6 z" fill="#c2410c"/>
+      <text x="54" y="66" font-size="11" fill="#c2410c">c<tspan font-size="8" dy="3">1</tspan></text>
+      <text x="206" y="70" font-size="11" fill="#c2410c">c<tspan font-size="8" dy="3">2</tspan></text>
+      <text x="150" y="160" font-size="11" fill="#c2410c">c<tspan font-size="8" dy="3">3</tspan></text>
+    </g>
+  </defs>
+
+  <!-- panel 1: BoW -->
+  <g>
+    <text x="20" y="28" font-size="15" font-weight="600" fill="#111827">BoW：数每个单词里有几个特征</text>
+    <use href="#pts"/><use href="#cent"/>
+    <g transform="translate(240,80)">
+      <line x1="0" y1="110" x2="70" y2="110" stroke="#6b7280"/>
+      <rect x="6" y="46" width="14" height="64" fill="#c2410c" opacity=".85"/><rect x="28" y="62" width="14" height="48" fill="#c2410c" opacity=".85"/><rect x="50" y="30" width="14" height="80" fill="#c2410c" opacity=".85"/>
+      <text x="9" y="124" font-size="11">4</text><text x="31" y="124" font-size="11">3</text><text x="53" y="124" font-size="11">5</text>
+      <text x="-2" y="20" font-size="11" fill="#6b7280">单词计数</text>
+    </g>
+    <text x="20" y="232" fill="#374151">每个单词一个计数，向量维度 K</text>
+    <text x="20" y="252" fill="#374151">量化损失大：同一单词内的差异全部丢失</text>
+    <text x="20" y="272" fill="#6b7280" font-size="12">Video Google 2003，词汇树 2006</text>
+  </g>
+
+  <!-- panel 2: VLAD -->
+  <g transform="translate(340,0)">
+    <text x="20" y="28" font-size="15" font-weight="600" fill="#111827">VLAD：累加特征到中心的残差</text>
+    <use href="#pts"/>
+    <g stroke="#c2410c" stroke-width="1.2" marker-end="url(#a)">
+      <line x1="74" y1="78" x2="61" y2="71"/><line x1="74" y1="78" x2="78" y2="60"/><line x1="74" y1="78" x2="53" y2="90"/><line x1="74" y1="78" x2="83" y2="87"/>
+      <line x1="198" y1="80" x2="191" y2="64"/><line x1="198" y1="80" x2="211" y2="80"/><line x1="198" y1="80" x2="177" y2="95"/>
+      <line x1="140" y1="164" x2="121" y2="151"/><line x1="140" y1="164" x2="145" y2="166"/><line x1="140" y1="164" x2="109" y2="175"/><line x1="140" y1="164" x2="140" y2="142"/><line x1="140" y1="164" x2="158" y2="186"/>
+    </g>
+    <use href="#cent"/>
+    <g transform="translate(240,70)" font-size="12" fill="#374151">
+      <text x="0" y="0">v<tspan font-size="9" dy="3">1</tspan><tspan dy="-3"> = Σ (x − c</tspan><tspan font-size="9" dy="3">1</tspan><tspan dy="-3">)</tspan></text>
+      <text x="0" y="22">v<tspan font-size="9" dy="3">2</tspan><tspan dy="-3"> = Σ (x − c</tspan><tspan font-size="9" dy="3">2</tspan><tspan dy="-3">)</tspan></text>
+      <text x="0" y="44">v<tspan font-size="9" dy="3">3</tspan><tspan dy="-3"> = Σ (x − c</tspan><tspan font-size="9" dy="3">3</tspan><tspan dy="-3">)</tspan></text>
+      <rect x="0" y="58" width="22" height="12" fill="#c2410c" opacity=".85"/><rect x="24" y="58" width="22" height="12" fill="#c2410c" opacity=".6"/><rect x="48" y="58" width="22" height="12" fill="#c2410c" opacity=".4"/>
+      <text x="0" y="86" font-size="11" fill="#6b7280">拼接后 D×K 维</text>
+    </g>
+    <text x="20" y="232" fill="#374151">每个单词一个 D 维残差向量，维度 D×K</text>
+    <text x="20" y="252" fill="#374151">保留了「偏向哪边」，小字典也够用</text>
+    <text x="20" y="272" fill="#6b7280" font-size="12">Jégou et al. 2010；硬分配，不可导</text>
+  </g>
+
+  <!-- panel 3: NetVLAD -->
+  <g transform="translate(670,0)">
+    <text x="20" y="28" font-size="15" font-weight="600" fill="#111827">NetVLAD：软分配 + 可学习中心</text>
+    <use href="#pts"/>
+    <circle cx="120" cy="112" r="4.5" fill="#1d4ed8"/>
+    <text x="128" y="108" font-size="11" fill="#1d4ed8">x<tspan font-size="8" dy="3">i</tspan></text>
+    <g stroke="#c2410c" fill="none" marker-end="url(#a)">
+      <line x1="120" y1="112" x2="78" y2="82" stroke-width="2.2"/>
+      <line x1="120" y1="112" x2="194" y2="84" stroke-width="1.2" stroke-dasharray="3 3"/>
+      <line x1="120" y1="112" x2="138" y2="158" stroke-width="1.6" stroke-dasharray="5 3"/>
+    </g>
+    <text x="72" y="104" font-size="11" fill="#c2410c">0.7</text>
+    <text x="158" y="92" font-size="11" fill="#c2410c">0.1</text>
+    <text x="134" y="142" font-size="11" fill="#c2410c">0.2</text>
+    <use href="#cent"/>
+    <g transform="translate(236,66)" font-size="12" fill="#374151">
+      <text x="0" y="0">a<tspan font-size="9" dy="3">k</tspan><tspan dy="-3">(x) = softmax(w</tspan><tspan font-size="9" dy="3">k</tspan><tspan dy="-3">·x + b</tspan><tspan font-size="9" dy="3">k</tspan><tspan dy="-3">)</tspan></text>
+      <text x="0" y="22">V<tspan font-size="9" dy="3">k</tspan><tspan dy="-3"> = Σ a</tspan><tspan font-size="9" dy="3">k</tspan><tspan dy="-3">(x)(x − c</tspan><tspan font-size="9" dy="3">k</tspan><tspan dy="-3">)</tspan></text>
+      <text x="0" y="48" font-size="11" fill="#6b7280">w, b, c 均可学习</text>
+      <text x="0" y="64" font-size="11" fill="#6b7280">CNN 特征图当作 N 个</text>
+      <text x="0" y="80" font-size="11" fill="#6b7280">局部描述子，端到端训练</text>
+    </g>
+    <text x="20" y="232" fill="#374151">分配变成 softmax，整个层可导</text>
+    <text x="20" y="252" fill="#374151">中心 c 与分配权重 w 解耦，更灵活</text>
+    <text x="20" y="272" fill="#6b7280" font-size="12">Arandjelović et al. CVPR 2016</text>
+  </g>
+
+  <text x="20" y="306" font-size="12" fill="#6b7280">蓝点：局部描述子；橙色菱形：聚类中心（视觉单词）；三个面板使用同一组特征。</text>
+</svg>
